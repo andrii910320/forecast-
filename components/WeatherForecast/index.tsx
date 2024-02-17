@@ -4,21 +4,26 @@ import { daysOfWeek } from "@/utils/constant";
 import Image from "next/image";
 import { FC, useEffect } from "react";
 import s from "./style.module.scss";
-
 interface WeatherForecastProps {
   days: IDay[];
 }
 
 const WeatherForecast: FC<WeatherForecastProps> = ({ days }) => {
-  const viewForecast = days.map((day) => {
+  console.log(days, "asd");
+
+  const viewForecast = days.map((day, index) => {
     return (
-      <div className={s.day}>
-        {/* {console.log(day.icon)} */}
+      <div className={s.day} key={index}>
         <h6 className={s.nameDay}>
           {daysOfWeek[new Date(day.datetime).getDay()]}
         </h6>
         <div className={s.imageDay}>
-          <img src={""} alt="Icon" width={50} height={50} />
+          <Image
+            src={`/weather/${day.icon}.png`}
+            alt="Icon"
+            width={60}
+            height={60}
+          />
         </div>
         <div className={s.temperatureContainer}>
           <p className={s.temperature}>

@@ -1,29 +1,32 @@
-.containerForecast{
-
+.containerForecast {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
 
-  .day{
+  .day {
     width: 4rem;
-    margin:   1rem;
+    margin: 1rem;
+    .imageDay {
+      display: flex;
+      justify-content: center;
+    }
 
-    .nameDay{
+    .nameDay {
       text-align: center;
       color: var(--grey-primary);
       font-weight: 500;
     }
-    .temperatureContainer{
+    .temperatureContainer {
       display: flex;
       justify-content: center;
-      margin-top: 0.2rem;
+      margin-top: 1rem;
+      font-size: 0.8rem;
+      color: grey;
       text-align: center;
-      .temperature{
-      }
     }
   }
 }
-.title{
+.title {
   font-weight: 400;
   font-size: 1.5rem;
 }

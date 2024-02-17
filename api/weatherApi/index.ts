@@ -4,10 +4,8 @@ export const getWeather = async (
   dateStart: string,
   dateEnd: string
 ) => {
-  const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}/${dateStart}/${dateEnd}?unitGroup=metric&iconSet=icons1&include=days&key=4KAZJNUS6VAA8BCWYB6Q7HHBT&contentType=json`;
-  const options = {
-    method: "GET",
-  };
+  const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${city}/${dateStart}/${dateEnd}?unitGroup=metric&iconSet=icons1&include=days&key=${process.env.NEXT_PUBLIC_WEATHER_KEY}&contentType=json`;
+
   try {
     const response = await fetch(url);
     const result = (await JSON.parse(await response.text())) as IWeather;

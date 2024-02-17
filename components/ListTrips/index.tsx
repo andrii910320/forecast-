@@ -3,25 +3,29 @@ import { getWeather } from "@/api/weatherApi";
 import { IDay } from "@/api/weatherApi/weatherApi.type";
 import { firstTrip } from "@/utils/constant";
 import { ITripCard } from "@/utils/interface";
-import { FC, useEffect, useState } from "react";
+import { Dispatch, FC, SetStateAction, useEffect, useState } from "react";
 import ModalAddNewTrip from "../UI/ModalAddNewTrip";
 import CardView from "../UI/ViewCard";
 import WeatherForecast from "../WeatherForecast";
 import s from "./style.module.scss";
 
-interface ListTripsProps {}
+interface ListTripsProps {
+  activeTrip: number;
+  setActiveTrip: Dispatch<SetStateAction<number>>;
+}
 
-const ListTrips: FC<ListTripsProps> = () => {
+const ListTrips: FC<ListTripsProps> = ({ activeTrip, setActiveTrip }) => {
   const [arrTrips, setArrTrips] = useState<ITripCard[]>([]);
   const [filterArrTrips, setFilterArrTrips] = useState<ITripCard[]>([]);
   const [openModal, setOpenModal] = useState(false);
-  const [activeTrip, setActiveTrip] = useState(0);
   const [search, setSearch] = useState("");
   const [forecast, setForecast] = useState<IDay[]>([]);
 
   useEffect(() => {
     const getWeatherByCity = async () => {
-      const { city, dayBegin, dayFinish } = arrTrips[activeTrip];
+      console.log(filterArrTrips, activeTrip);
+      const { city, dayBegin, dayFinish } = filterArrTrips[activeTrip];
+      console.log(city, dayBegin, dayFinish);
       const forecast = await getWeather(city, dayBegin, dayFinish);
       forecast?.days && setForecast(forecast?.days);
     };
@@ -67,9 +71,10 @@ const ListTrips: FC<ListTripsProps> = () => {
         <ModalAddNewTrip
           setOpenModal={setOpenModal}
           setArrTrips={setArrTrips}
+          setFilterArrTrips={setFilterArrTrips}
         />
       )}
-      {arrTrips && activeTrip ? <WeatherForecast days={forecast} /> : " "}
+      {arrTrips && filterArrTrips ? <WeatherForecast days={forecast} /> : " "}
     </div>
   );
 };

@@ -23,11 +23,13 @@ import { getPhoto } from "@/api/photoByCityApi";
 interface ModalAddNewTripProps {
   setOpenModal: Dispatch<SetStateAction<boolean>>;
   setArrTrips: Dispatch<SetStateAction<ITripCard[]>>;
+  setFilterArrTrips: Dispatch<SetStateAction<ITripCard[]>>;
 }
 
 const ModalAddNewTrip: FC<ModalAddNewTripProps> = ({
   setOpenModal,
   setArrTrips,
+  setFilterArrTrips,
 }) => {
   const [country, setCountry] = useState("");
   const [needRerender, setNeedRerender] = useState(true);
@@ -81,6 +83,7 @@ const ModalAddNewTrip: FC<ModalAddNewTripProps> = ({
       const parsList = list && JSON.parse(list);
       parsList.push(trip);
       setArrTrips(parsList);
+      setFilterArrTrips(parsList);
       localStorage.setItem("TripList", JSON.stringify(parsList));
     }
     closeModal();
