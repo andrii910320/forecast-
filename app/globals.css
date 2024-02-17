@@ -1,0 +1,13 @@
+:root {
+  --background-color-primary: whitesmoke;
+  --grey-primary: #bababa;
+  --blue-primary: rgb(0, 76, 255);
+
+  --mobile: 400px
+}
+
+*{
+  padding: 0;
+  margin: 0;
+}
+

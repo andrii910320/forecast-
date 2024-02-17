@@ -1,0 +1,15 @@
+.page{
+  background-color: var(--background-color-primary);
+  min-height: 100vh;
+  display: flex;
+  padding-left: 2.5rem;
+
+
+  .mainPart{
+    width: 65%;
+  }
+  .currentWeather{
+    width: 35%;
+  }
+
+}

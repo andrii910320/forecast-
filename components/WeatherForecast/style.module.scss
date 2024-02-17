@@ -1,0 +1,29 @@
+.containerForecast{
+
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+
+  .day{
+    width: 4rem;
+    margin:   1rem;
+
+    .nameDay{
+      text-align: center;
+      color: var(--grey-primary);
+      font-weight: 500;
+    }
+    .temperatureContainer{
+      display: flex;
+      justify-content: center;
+      margin-top: 0.2rem;
+      text-align: center;
+      .temperature{
+      }
+    }
+  }
+}
+.title{
+  font-weight: 400;
+  font-size: 1.5rem;
+}

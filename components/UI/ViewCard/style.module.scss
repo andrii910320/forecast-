@@ -1,0 +1,49 @@
+.cards {
+  display: flex;
+  justify-content: space-between;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  // gap: 1rem;
+  .card {
+    cursor: pointer;
+    width: 100%;
+    max-width: 12rem;
+    margin: 0 1rem;
+    border: 1px solid var(--grey-primary);
+
+    .nameCity {
+      margin: 1rem;
+      font-weight: 800;
+    }
+    .period {
+      color: var(--grey-primary);
+      font-size: 0.7rem;
+      margin: 1rem;
+    }
+  }
+  .activeCard {
+    border-color: var(--blue-primary);
+  }
+  .addNewTrip {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 12rem;
+    cursor: pointer;
+  }
+}
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  .buttonControl {
+    width: 2rem;
+    height: 2rem;
+    margin: 0 0.5rem;
+    background-color: var(--grey-primary);
+    border:none;
+    border-radius: 0.2rem;
+  }
+}
