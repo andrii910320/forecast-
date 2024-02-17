@@ -3,8 +3,8 @@ export const getCountry = async (country: string) => {
   const options = {
     method: "GET",
     headers: {
-      "X-RapidAPI-Key": "c6e2ec3cbfmsh5dadfbec371535bp1d9c7fjsn3a1b200a44da",
-      "X-RapidAPI-Host": "wft-geo-db.p.rapidapi.com",
+      "X-RapidAPI-Key": process.env.NEXT_PUBLIC_X_RapidAPI_Key,
+      "X-RapidAPI-Host": process.env.NEXT_PUBLIC_X_RapidAPI_Host,
     },
   };
 
