@@ -1,15 +1,33 @@
+@import "/assets/style/variables.module.scss";
 .page{
   background-color: var(--background-color-primary);
   min-height: 100vh;
   display: flex;
-  padding-left: 2.5rem;
+
+
+  @media (max-width: $tablet) {
+    flex-wrap: wrap;
+  }
 
 
   .mainPart{
+    flex: 1;
+    padding: 1rem;
     width: 65%;
+    min-width: 500px;
+    @media (max-width: $tablet) {
+      // width: 100%;
+      min-width: auto
+
+    }
   }
   .currentWeather{
     width: 35%;
+    min-width: 500px;
+    @media (max-width: $tablet) {
+      width: 100%;
+      min-width: auto
+    }
   }
 
 }

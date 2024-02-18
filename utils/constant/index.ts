@@ -16,3 +16,7 @@ export const daysOfWeek = [
   "Friday",
   "Saturday",
 ];
+
+export const AppRouters = {
+  FORECAST: "/forecast"
+}
