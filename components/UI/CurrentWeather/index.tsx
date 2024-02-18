@@ -23,8 +23,8 @@ const CurrentWeather: FC<CurrentWeatherProps> = ({ trip }) => {
     wetherToday();
   }, [city]);
   const currentTime = new Date().getHours();
+  console.log(currentTime);
   const evening = currentTime > 18 || currentTime < 7;
-
 
   return (
     <div className={cn(s.weather, { [s.evening]: evening })}>
