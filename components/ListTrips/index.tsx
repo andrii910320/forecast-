@@ -28,6 +28,7 @@ const ListTrips: FC<ListTripsProps> = ({
   const [openModal, setOpenModal] = useState(false);
   const [search, setSearch] = useState("");
   const [forecast, setForecast] = useState<IDay[]>([]);
+  console.log(arrTrips, "asd");
 
   const getWeatherByCity = async () => {
     const { city, dayBegin, dayFinish } = filterArrTrips[activeTrip];
@@ -47,9 +48,17 @@ const ListTrips: FC<ListTripsProps> = ({
       localStorage.setItem("TripList", JSON.stringify([firstTrip]));
     } else {
       const arrTripsLocalStore = JSON.parse(list) as ITripCard[];
-      const arr = arrTripsLocalStore.filter((trip) =>
-        trip.city.startsWith(search)
-      );
+      setArrTrips(arrTripsLocalStore);
+    }
+  }, []);
+
+  useEffect(() => {
+    const list = localStorage.getItem("TripList");
+    if (!list) {
+      localStorage.setItem("TripList", JSON.stringify([firstTrip]));
+    } else {
+      const arrTripsLocalStore = JSON.parse(list) as ITripCard[];
+      const arr = arrTrips.filter((trip) => trip.city.startsWith(search));
       if (arr.length === 0 && !search) {
         setFilterArrTrips(arrTripsLocalStore);
       } else {
@@ -68,7 +77,13 @@ const ListTrips: FC<ListTripsProps> = ({
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
-        <Image className={s.iconSearch} src={searchIcon} alt="" width={20} height={20} />
+        <Image
+          className={s.iconSearch}
+          src={searchIcon}
+          alt=""
+          width={20}
+          height={20}
+        />
       </div>
       <CardView
         arrTrips={filterArrTrips}
