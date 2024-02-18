@@ -1,9 +1,8 @@
 "use client";
 import LoginWithGoogle from "@/components/UI/LoginWithGoogle";
 import Image from "next/image";
-import { GoogleLogin } from "react-google-login";
-import { useGoogleLogin } from "@react-oauth/google";
-import { GoogleOAuthProvider } from "@react-oauth/google";
+// import { useGoogleLogin } from "@react-oauth/google";
+// import { GoogleOAuthProvider } from "@react-oauth/google";
 import s from "./style.module.scss";
 
 export default function Login() {
