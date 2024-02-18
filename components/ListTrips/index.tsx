@@ -21,18 +21,17 @@ const ListTrips: FC<ListTripsProps> = ({ activeTrip, setActiveTrip }) => {
   const [search, setSearch] = useState("");
   const [forecast, setForecast] = useState<IDay[]>([]);
 
+  const getWeatherByCity = async () => {
+    const { city, dayBegin, dayFinish } = filterArrTrips[activeTrip];
+    const forecast = await getWeather(city, dayBegin, dayFinish);
+    forecast?.days && setForecast(forecast?.days);
+  };
+
   useEffect(() => {
-    const getWeatherByCity = async () => {
-      console.log(filterArrTrips, activeTrip);
-      const { city, dayBegin, dayFinish } = filterArrTrips[activeTrip];
-      console.log(city, dayBegin, dayFinish);
-      const forecast = await getWeather(city, dayBegin, dayFinish);
-      forecast?.days && setForecast(forecast?.days);
-    };
     if (arrTrips.length != 0) {
       getWeatherByCity();
     }
-  }, [activeTrip]);
+  }, [activeTrip, arrTrips]);
 
   useEffect(() => {
     const list = localStorage.getItem("TripList");
@@ -44,7 +43,6 @@ const ListTrips: FC<ListTripsProps> = ({ activeTrip, setActiveTrip }) => {
         trip.city.startsWith(search)
       );
       if (arr.length === 0 && !search) {
-        console.log(arrTripsLocalStore, "arr");
         setFilterArrTrips(arrTripsLocalStore);
       } else {
         setFilterArrTrips(arr);
@@ -74,7 +72,7 @@ const ListTrips: FC<ListTripsProps> = ({ activeTrip, setActiveTrip }) => {
           setFilterArrTrips={setFilterArrTrips}
         />
       )}
-      {arrTrips && filterArrTrips ? <WeatherForecast days={forecast} /> : " "}
+      {forecast ? <WeatherForecast days={forecast} /> : ""}
     </div>
   );
 };

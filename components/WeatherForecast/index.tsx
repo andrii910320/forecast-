@@ -9,7 +9,6 @@ interface WeatherForecastProps {
 }
 
 const WeatherForecast: FC<WeatherForecastProps> = ({ days }) => {
-  console.log(days, "asd");
 
   const viewForecast = days.map((day, index) => {
     return (

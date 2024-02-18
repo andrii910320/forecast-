@@ -3,14 +3,17 @@
   justify-content: space-between;
   overflow-x: hidden;
   scroll-behavior: smooth;
-  // gap: 1rem;
   .card {
     cursor: pointer;
-    width: 100%;
-    max-width: 12rem;
+    max-width:10rem;
+    min-width: 10rem;
     margin: 0 1rem;
     border: 1px solid var(--grey-primary);
 
+    .image{
+      width: 100%;
+      min-width: 150px;
+    }
     .nameCity {
       margin: 1rem;
       font-weight: 800;
@@ -25,12 +28,14 @@
     border-color: var(--blue-primary);
   }
   .addNewTrip {
+    background-color: red;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100%;
-    max-width: 12rem;
+    min-width: 150px;
+    height: 150px;
+    // max-width: 12rem;
     cursor: pointer;
   }
 }

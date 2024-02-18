@@ -62,7 +62,7 @@ const CardView: FC<CardViewProps> = ({
     >
       <div>
         {card.img && (
-          <Image src={card.img} alt="Not found" width={180} height={180} />
+          <Image className={s.image} src={card.img} alt="Not found" width={150} height={150} />
         )}
       </div>
       <p className={s.nameCity}>{card.city}</p>
